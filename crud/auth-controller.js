@@ -3,9 +3,11 @@ import { pool } from "../services/postgres-service.js"
 
 export default class authController {
     async login(req, _) {
+        
         const user = await pool.query(`SELECT id, password FROM users WHERE username = '${req.body.username}'`)
+        console.log(user)
 
-        if (!user) {
+        if (!user.id) {
             return 'user not found'
         }
         
