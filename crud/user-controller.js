@@ -4,7 +4,7 @@ export default class userController {
     async read(_, res) {
         const users = await pool.query('SELECT * FROM users')
 
-        return res.json(users.rows)     
+        return users.rows
     }
 
     async create(req, _) {
